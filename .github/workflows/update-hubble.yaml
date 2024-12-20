@@ -41,8 +41,9 @@ jobs:
       - name: Update Dockerfile and Makefile with latest Hubble version
         if: env.update_needed == 'true'
         run: |
+          sed -i "s/^ARG HUBBLE_VERSION=.*/ARG HUBBLE_VERSION=${{ env.version }}/" controller/Dockerfile
           sed -i "s/^ENV HUBBLE_VERSION=.*/ENV HUBBLE_VERSION=${{ env.version }}/" controller/Dockerfile
-          sed -i "s/^HUBBLE_VERSION=.*/HUBBLE_VERSION=${{ env.version }}/" Makefile
+          sed -i "s/^HUBBLE_VERSION ?=.*/HUBBLE_VERSION=${{ env.version }}/" Makefile
 
       - name: Create new branch
         if: env.update_needed == 'true'
@@ -54,7 +55,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add controller/Dockerfile Makefile
+          git add .
           git commit -m "Bump Hubble version to ${{ env.version }}"
           git push --set-upstream origin bump-hubble-version-${{ env.version }}
         env:
