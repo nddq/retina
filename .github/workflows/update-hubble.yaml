@@ -50,6 +50,7 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          branch: deps/update-hubble-to-${{ env.version }}
           title: "deps: bump Hubble version from ${{ env.current_version }} to ${{ env.version }}"
           body: "This PR bumps the Hubble version from ${{ env.current_version }} to ${{ env.version }}."
           commit-message: "deps: bump Hubble version from ${{ env.current_version }} to ${{ env.version }}"
