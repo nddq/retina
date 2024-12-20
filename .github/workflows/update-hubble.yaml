@@ -7,6 +7,7 @@ on:
 
 jobs:
   update-hubble:
+    name: Update Hubble to latest version
     runs-on: ubuntu-latest
 
     steps:
@@ -67,7 +68,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: bump-hubble-version-${{ env.version }}
-          base: main
+          base: bump-hubble-version-${{ env.version }}
           title: "deps: bump Hubble version to ${{ env.version }}"
           body: "This PR bumps the Hubble version to ${{ env.version }}."
           labels: "area/dependencies"
