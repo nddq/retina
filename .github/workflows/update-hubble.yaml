@@ -43,8 +43,7 @@ jobs:
         if: env.update_needed == 'true'
         run: |
           sed -i "s/^ARG HUBBLE_VERSION=.*/ARG HUBBLE_VERSION=${{ env.version }}/" controller/Dockerfile
-          sed -i "s/^ENV HUBBLE_VERSION=.*/ENV HUBBLE_VERSION=${{ env.version }}/" controller/Dockerfile
-          sed -i "s/^HUBBLE_VERSION ?=.*/HUBBLE_VERSION=${{ env.version }}/" Makefile
+          sed -i "s/^HUBBLE_VERSION ?=.*/HUBBLE_VERSION ?= ${{ env.version }}/" Makefile
 
       - name: Create pull request
         if: env.update_needed == 'true'
