@@ -14,7 +14,7 @@ import (
 const (
 	MaxNumberOfNodes = 3
 	MaxPodsPerNode   = 250
-	AgentSKU         = "Standard_DS4_v2"
+	AgentSKU         = "Standard_D4s_v6"
 )
 
 var defaultClusterCreateTimeout = 30 * time.Minute
