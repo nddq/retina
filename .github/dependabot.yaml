@@ -89,11 +89,8 @@ updates:
       # hive/statedb/stream versions are pinned by cilium/cilium's go.mod;
       # they can only move when cilium/cilium moves.
       - dependency-name: "github.com/cilium/hive"
-        update-types: ["version-update:semver-minor", "version-update:semver-major"]
       - dependency-name: "github.com/cilium/statedb"
-        update-types: ["version-update:semver-minor", "version-update:semver-major"]
       - dependency-name: "github.com/cilium/stream"
-        update-types: ["version-update:semver-minor", "version-update:semver-major"]
     groups:
       k8s:
         patterns:
